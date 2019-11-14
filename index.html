@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>How stupid are you?</title>
+    <style>
+        body{
+            margin: 1px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload a picture and see how stupid you are</h1>
+    <p>This test will give you a percentage of how stupid / unstupid you are, <br> don't worry.. we don't store your picture.</p>
+    <input type="file" name="picture" id="picture">
+    <div id="pic" style="width:360px;height:360px;"></div>
+    <h1 id="res"></h1>
+    <script>
+        let img = document.getElementById('pic');
+        document.getElementById('picture').onchange = (e) =>{
+            console.log(e.srcElement.files[0])
+            let reader = new FileReader();
+
+            reader.onload = (e) => {
+                document.getElementById('pic').style = `width:320px;height:320px;background:url(${e.target.result});background-size:cover;background-repeat:no-repeat;`
+                document.getElementById('res').textContent = `You are 100% stupid haha gotem`
+            }
+            reader.readAsDataURL(e.srcElement.files[0])
+            
+        }
+    </script>
+</body>
+</html>
